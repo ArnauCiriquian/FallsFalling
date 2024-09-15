@@ -52,28 +52,28 @@ public class BranchSpawner : MonoBehaviour
         switch (spawnSpot)
         {
             case 1:
-                Instantiate(branch, new Vector3(10, -10, 0), Quaternion.Euler(90, 0, 90));
+                Instantiate(branch, new Vector3(15, -17, 0), Quaternion.Euler(90, 0, 90));
                 break;
             case 2:
-                Instantiate(branch, new Vector3(0, -10, -10), Quaternion.Euler(90, 90, 90));
+                Instantiate(branch, new Vector3(0, -17, -15), Quaternion.Euler(90, 90, 90));
                 break;
             case 3:
-                Instantiate(branch, new Vector3(-10, -10, 0), Quaternion.Euler(90, 180, 90));
+                Instantiate(branch, new Vector3(-15, -17, 0), Quaternion.Euler(90, 180, 90));
                 break;
             case 4:
-                Instantiate(branch, new Vector3(0, -10, 10), Quaternion.Euler(90, 270, 90));
+                Instantiate(branch, new Vector3(0, -17, 15), Quaternion.Euler(90, 270, 90));
                 break;
             case 5:
-                Instantiate(branch, new Vector3(-8, -10, -6), Quaternion.Euler(90, 135, 90));
+                Instantiate(branch, new Vector3(-10, -17, -11), Quaternion.Euler(90, 135, 90));
                 break;
             case 6:
-                Instantiate(branch, new Vector3(8, -10, -6), Quaternion.Euler(90, 45, 90));
+                Instantiate(branch, new Vector3(10, -17, -11), Quaternion.Euler(90, 45, 90));
                 break;
             case 7:
-                Instantiate(branch, new Vector3(8, -10, 6), Quaternion.Euler(90, -45, 90));
+                Instantiate(branch, new Vector3(10, -17, 11), Quaternion.Euler(90, -45, 90));
                 break;
             case 8:
-                Instantiate(branch, new Vector3(0, -10, 10), Quaternion.Euler(90, -135, 90));
+                Instantiate(branch, new Vector3(-10, -17, 11), Quaternion.Euler(90, -135, 90));
                 break;
         }
     }
