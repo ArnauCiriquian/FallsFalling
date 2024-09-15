@@ -22,6 +22,8 @@ public class AntMechanics : MonoBehaviour
     public float normalFOV = 60f;
     public float fovTransitionSpeed = 5f;
 
+    public ParticleSystem diveParticleSystem;
+
     private PlayerActions inputActions;
     private bool IsDiving = false;
 
@@ -53,6 +55,11 @@ public class AntMechanics : MonoBehaviour
         if (virtualCamera != null)
         {
             virtualCamera.m_Lens.FieldOfView = normalFOV;
+        }
+
+        if (diveParticleSystem == null)
+        {
+            diveParticleSystem = GetComponent<ParticleSystem>();
         }
     }
 
@@ -187,6 +194,8 @@ public class AntMechanics : MonoBehaviour
             float currentFOV = virtualCamera.m_Lens.FieldOfView;
             virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(currentFOV, normalFOV, Time.deltaTime * fovTransitionSpeed);
         }
+
+        diveParticleSystem.Emit(0);
     }
 
     private void Dive()
@@ -200,6 +209,8 @@ public class AntMechanics : MonoBehaviour
             float currentFOV = virtualCamera.m_Lens.FieldOfView;
             virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(currentFOV, diveFOV, Time.deltaTime * fovTransitionSpeed);
         }
+
+        diveParticleSystem.Emit(1);
     }
 
     public float CurrentDiveAngle
