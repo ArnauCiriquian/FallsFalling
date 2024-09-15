@@ -28,7 +28,7 @@ public class AntMechanics : MonoBehaviour
     private bool IsDiving = false;
 
     private AudioSource audioSource;
-    private bool IsDead = false;
+    public bool IsDead = false;
 
     private void OnEnable()
     {
@@ -233,7 +233,21 @@ public class AntMechanics : MonoBehaviour
             IsDead = true;
 
             audioSource.Play();
-            Debug.Log("Dead!");
+
+            StartCoroutine(WaitForTwoSeconds());
         }
+    }
+
+    IEnumerator WaitForTwoSeconds()
+    {
+        yield return new WaitForSeconds(2);
+
+        EndGame();
+    }
+
+    private void EndGame()
+    {
+        GameMenu gameMenuScript = FindObjectOfType<GameMenu>();
+        gameMenuScript.LoadScene();
     }
 }
