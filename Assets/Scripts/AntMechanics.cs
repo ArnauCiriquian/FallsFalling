@@ -27,6 +27,9 @@ public class AntMechanics : MonoBehaviour
     private PlayerActions inputActions;
     private bool IsDiving = false;
 
+    private AudioSource audioSource;
+    private bool IsDead = false;
+
     private void OnEnable()
     {
         if (inputActions == null)
@@ -61,20 +64,25 @@ public class AntMechanics : MonoBehaviour
         {
             diveParticleSystem = GetComponent<ParticleSystem>();
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        AntLateralMovement();
-        AntVerticalMovement();
+        if (!IsDead)
+        {
+            AntLateralMovement();
+            AntVerticalMovement();
 
-        if (IsDiving)
-        {
-            Dive();
-        }
-        else
-        {
-            ResetDiveRotation();
+            if (IsDiving)
+            {
+                Dive();
+            }
+            else
+            {
+                ResetDiveRotation();
+            }
         }
     }
 
@@ -216,5 +224,16 @@ public class AntMechanics : MonoBehaviour
     public float CurrentDiveAngle
     {
         get { return transform.rotation.eulerAngles.x; }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!IsDead && other.gameObject.CompareTag("Branch"))
+        {
+            IsDead = true;
+
+            audioSource.Play();
+            Debug.Log("Dead!");
+        }
     }
 }
