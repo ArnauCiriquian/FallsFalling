@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class BranchMovement : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    public float baseMoveSpeed = 10;
+    public float maxMoveSpeed = 20;
     public float deadZone = 40;
+
+    private AntMechanics antMechanics;
+
+    private void Start()
+    {
+        antMechanics = FindObjectOfType<AntMechanics>();
+    }
 
     void Update()
     {
-        transform.position = transform.position + (Vector3.up * moveSpeed) * Time.deltaTime;
+        if (antMechanics != null)
+        {
+            float diveAngle = antMechanics.CurrentDiveAngle;
+
+            float speedFactor = Mathf.Lerp(baseMoveSpeed, maxMoveSpeed, diveAngle / 70f);
+
+            transform.position += (Vector3.up * speedFactor) * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += (Vector3.up * baseMoveSpeed) * Time.deltaTime;
+        }
 
         if (transform.position.y > deadZone)
         {

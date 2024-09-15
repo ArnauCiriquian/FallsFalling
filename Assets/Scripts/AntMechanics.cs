@@ -201,4 +201,9 @@ public class AntMechanics : MonoBehaviour
             virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(currentFOV, diveFOV, Time.deltaTime * fovTransitionSpeed);
         }
     }
+
+    public float CurrentDiveAngle
+    {
+        get { return transform.rotation.eulerAngles.x; }
+    }
 }
