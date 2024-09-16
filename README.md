@@ -4,6 +4,8 @@ Fall is here...
 and with it, you must make your way down the tree! Grab your leaf and surf through the branches! How long can you last?
 A trijam game #287 made in 2h and 59 minutes! 
 
+![Game GIF](Trijam287.gif)
+
 
 ## Future updates
 Distance tracking (dive will be more useful), lives, power ups and more!
